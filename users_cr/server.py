@@ -10,13 +10,8 @@ def read_all_users():
 
 @app.route('/create_user', methods=["POST"])
 def create_user():
-    data = {
-        "first_name": request.form['first_name'],
-        "last_name" : request.form['last_name'],
-        "email" : request.form['email']
-        # "created_at" : request.form['created_at']
-    }
-    User.create(data)
+
+    User.create(request.form)
 
     return redirect('/')
 
