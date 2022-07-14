@@ -10,7 +10,7 @@ def index():
     return render_template("index.html", all_friends = friends)
 
 # relevant code snippet from server.py
-from friend import Friend
+# from friend import Friend
 @app.route('/create_friend', methods=["POST"])
 def create_friend():
     # First we make a data dictionary from our request.form coming from our template.
