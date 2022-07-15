@@ -7,6 +7,26 @@
     <title>Show Dojo</title>
 </head>
 <body>
-    <h1>coming soon</h1>
+    <div id="container">
+        <h1>{{ dojo.dojo_name }} Ninjas</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for ninja in dojo.ninjas %}
+                    <td>{{ ninja.first_name }}</td>
+                    <td>{{ ninja.last_name }}</td>
+                    <td>{{ ninja.age }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

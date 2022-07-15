@@ -8,11 +8,15 @@ def ninjas():
     all_ninjas = Ninja.get_all()
     all_dojos = Dojo.get_all()
     print(all_ninjas)
+    print('*************************************')
+    print(all_dojos)
     return render_template('new_ninja.html', all_ninjas = all_ninjas, all_dojos = all_dojos)
 
 #Action
 @app.route('/create_ninja', methods=["POST"])
 def create_ninja():
     Ninja.create(request.form)
+    print(request.form)
 
-    return redirect ('/dojos')
+    return redirect (f'/show_dojo/{request.form["dojo_id"]}')
+

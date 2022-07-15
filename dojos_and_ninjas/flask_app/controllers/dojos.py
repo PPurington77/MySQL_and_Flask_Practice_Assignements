@@ -3,6 +3,11 @@ from flask import render_template, redirect, request, session, flash
 from flask_app.models.dojo import Dojo
 from flask_app.models.ninja import Ninja
 
+@app.route('/')
+def main_page():
+
+    return redirect('/dojos')
+
 #Display
 @app.route('/dojos')
 def dojos():
@@ -23,4 +28,4 @@ def show_dojo(id):
     data = {
         'id':id 
     }
-    return render_template('show_dojo.html', dojo = Dojo.get_one(data))
+    return render_template('show_dojo.html', dojo = Dojo.dojo_with_ninjas(data))
