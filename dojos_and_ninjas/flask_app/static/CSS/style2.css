@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin: 40px;
+}
+
+.cont {
+    margin: 20px 40px;
+}
+
+button {
+    margin: 0px 40px;
+}
+
+a {
+    display: block;
+    margin: 20px 40px;
+}

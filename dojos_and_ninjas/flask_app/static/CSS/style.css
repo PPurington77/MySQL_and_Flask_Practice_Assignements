@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 100px;
+    outline: 2px solid purple;
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+}
+
+#left_column input {
+    border: 2px solid black;
+    height: 20px;
+}
+
+#lButton {
+    display: block;
+    margin: 20px 50px;
+    width: 100px;
+    box-shadow: 3px 3px black;
+}
+
+#dojoOutline {
+    border: 2px solid black;
+    margin-bottom: 20px;
+}
+
+#right_column p {
+    margin: 10px 5px;
+}
