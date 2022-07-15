@@ -5,29 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Read All</title>
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style.css">
 </head>
 <body>
     <h1>All Users</h1>
+    <div class="container">
         <table>
             <thead>
-                <tr>
-                    <th>ID</th>
+                <tr class="color">
+                    <th class="small_table">ID</th>
                     <th>Full Name</th>
                     <th>Email</th>
                     <th>Created At</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for one_user in all_users %}
                 <tr>
-                    <td>{{ one_user.id }}</td>
+                    <td class="small_table">{{ one_user.id }}</td>
                     <td>{{ one_user.full_name }}</td>
                     <td>{{ one_user.email }}</td>
                     <td>{{ one_user.created_at }}</td>
+                    <td><a href="/show_user/{{ one_user.id }}">Show</a> | <a href="/edit/{{ one_user.id }}">Edit</a> | <a href="/destroy/{{ one_user.id }}">Delete</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <a href="/create">Add a New User</a>
+    </div>
+        <a id="add" href="/create">Add a New User</a>
 </body>
 </html>

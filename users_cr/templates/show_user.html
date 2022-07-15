@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read (One)</title>
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style3.css">
+</head>
+<body>
+    <div id="header">
+        <h1>User</h1>
+        <a href="/">Home</a>
+    </div>
+    <div id="container">
+        <p>Full Name: {{ user.full_name}} </p>
+        <p>Email: {{ user.email }}</p>
+        <p>Created On: {{ user.created_at}} </p>
+        <p>Last Updated On: {{ user.updated_at }} </p>
+    </div>
+    <div id="links">
+        <a href="/edit/{{ user.id }}">Edit |</a>
+        <a href="#">Delete</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin: 40px 70px;
+}
+
+.container {
+    width: 880px;
+    margin: 0 auto;
+    outline: 2px solid black;
+}
+
+td, th {
+    width: 220px;
+    text-align:left;
+    outline: 2px solid black;
+    padding: 10px;
+}
+
+.small_table {
+    width: 40px;
+}
+
+.color {
+    background-color: gray;
+    color: white;
+}
+
+#add {
+    margin: 40px 70px;
+    display: block;
+}

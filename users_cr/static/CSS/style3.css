@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px;
+}
+
+#container {
+    width: 600px;
+    margin: 0 40px;
+    outline: 2px solid black;
+    padding: 2px;
+}
+
+#container p {
+    margin-bottom: 30px;
+}
+
+#links {
+    margin: 40px;
+}

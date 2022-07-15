@@ -4,22 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create User</title>
+    <title>Edit</title>
     <link rel="stylesheet" type="text/css" href="/static/CSS/style2.css">
 </head>
 <body>
     <div id="header">
-        <h1>Add a new User</h1>
+        <h1>Edit User {{ user.id }}</h1>
         <a href="/">Home</a>
     </div>
-    <form action="/create_user" method="POST">
+    <form action="/update_user" method="POST">
         <label for="first_name">First Name:</label>
-        <input type="text" name="first_name">
+        <input type="text" name="first_name" value="{{user.first_name}}">
         <label for="last_name">Last Name:</label>
-        <input type="text" name="last_name">
+        <input type="text" name="last_name" value="{{user.last_name}}">
         <label for="email" >Email:</label>
-        <input type="text" name="email">
-        <input id="button" type="submit" value="Create">
+        <input type="text" name="email" value="{{user.email}}">
+        <input id="button" type="submit" value="Update">
     </form>
+    <a id="bottomA" href="/show_user/{{ user.id }}">Show User</a>
 </body>
 </html>
