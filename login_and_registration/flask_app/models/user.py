@@ -111,7 +111,7 @@ class User:
         potential_user = User.get_one_login({'email': data['email']})
         print(potential_user)
         if not bcrypt.check_password_hash(potential_user.password, data['password']):
-            # flash("Incorrect Password", 'err_user_password_login')
+            flash("Incorrect Password", 'err_user_password_login')
             print(is_valid)
             is_valid = False
 

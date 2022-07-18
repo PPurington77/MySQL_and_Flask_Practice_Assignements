@@ -60,6 +60,9 @@
                 <div class="lables">
                     <label for="password">Password:</label>
                     <input type="password" name="password" placeholder="Type your password here">
+                    {% for message in get_flashed_messages(category_filter=["err_user_password_login"]) %}
+                    <p class="alert_alert-danger">{{ message }}</p>
+                    {% endfor %}
                 </div>
                 <input id="buttonRight" type="submit" value="Login">
             </form>

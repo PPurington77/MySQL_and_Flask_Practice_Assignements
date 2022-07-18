@@ -23,10 +23,10 @@ def register():
         'password' : hash_pw
     }
 
-    user_id = User.create(data)
-    session['user_id'] = user_id
-    print(user_id)
-    return redirect(f'/welcome/{user_id}')
+    user = User.create(data)
+    session['user'] = user
+    print(user)
+    return redirect(f'/welcome/{user}')
 
 #Display
 @app.route('/welcome/<int:id>')
@@ -34,6 +34,8 @@ def welcome(id):
     data = {
         'id' : id 
     }
+    if 'user' not in session:
+        return redirect ('/')
     return render_template('welcome.html', user = User.get_one(data))
 
 @app.route('/login', methods=["POST"])
@@ -50,12 +52,12 @@ def login():
     }
 
     user_id = User.get_one_login(data)
-    login_id = user_id.id
-    print(login_id)
+    user = user_id.id
 
-    # session['user_email'] = user_email
-    # print(user_email)
-    return redirect (f'/welcome/{login_id}') # in selecting I'm not getting an id return...need to figure out
+    
+    session['user'] = user
+
+    return redirect (f'/welcome/{user}') 
 
 #Display
 # @app.route('/welcome_user/<email>')
@@ -66,12 +68,11 @@ def login():
 #     return render_template('welcome.html', user = User.get_one(data))
 
 #Action
-@app.route('/logout', methods=['GET'])
+@app.route('/logout')
 def logout():
-    # if session == True:
-    #     print('in session')
-    # else:
-    #     print('not in session')
-    # session.clear()
-    ##FOR SOME REASON SESSION IS NOT WORKING...CAN'T FIGURE IT OUT FOR NOW...
-    return redirect('/')
+    print(login, 'should have data')
+    session.clear()
+    print(session, 'should be cleared')
+    if session == {}:
+        return redirect('/')
+    
