@@ -1,0 +1,54 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.box {
+    margin: 10px 0px;
+    background-color: rgb(82, 82, 82);
+    padding: 20px 15px;
+    width: 300px;
+    color: white;
+}
+
+input {
+    display: block;
+    width: 100%;
+    height: 30px;
+    margin: 5px 0px 20px;
+}
+
+#leftH1 {
+    color: dodgerblue;
+    margin-bottom: 10px;
+}
+
+#buttonLeft {
+    width: 25%;
+    background-color: dodgerblue;
+    color: white;
+}
+
+#rightH1 {
+    color: greenyellow;
+    margin-bottom: 10px;
+}
+
+#buttonRight {
+    width: 25%;
+    background-color: yellowgreen;
+    color: white;
+}
+
+.alert_alert-danger {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+}

@@ -32,7 +32,11 @@ class Dojo:
     def get_one(cls,data):
         query  = "SELECT * FROM dojos WHERE id = %(id)s;"
         result = connectToMySQL('dojos_and_ninjas_db').query_db(query,data)
-        return cls(result[0])
+
+        if result:
+            dojo = cls(result[0])
+            return dojo
+        return False 
 
     @classmethod
     def update(cls,data):
