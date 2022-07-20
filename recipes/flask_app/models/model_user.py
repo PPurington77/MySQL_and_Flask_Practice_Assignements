@@ -7,6 +7,8 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 PASSWORD_REGEX = re.compile(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$')
 CONFIRM_PASSWORD_REGEX = re.compile(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$')
 
+DATABASE = 'recipes_db'
+
 class User:
     def __init__(self, data):
         self.id = data['id']
@@ -16,12 +18,12 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.full_name = data['first_name'] + ' ' + data['last_name']
+
 
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM users"
-        results = connectToMySQL('login_and_registration_db').query_db(query)
+        results = connectToMySQL(DATABASE).query_db(query)
         all_users = []
         for user in results:
             all_users.append(cls(user))
@@ -31,12 +33,12 @@ class User:
     def create(cls, data):
         query = "INSERT INTO users (first_name, last_name, email, password, created_at, updated_at) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s, NOW(), NOW() );"
         
-        return connectToMySQL('login_and_registration_db').query_db(query, data)
+        return connectToMySQL(DATABASE).query_db(query, data)
 
     @classmethod
     def get_one(cls, data):
         query = "SELECT * FROM users WHERE id = %(id)s;"
-        result = connectToMySQL('login_and_registration_db').query_db(query, data)
+        result = connectToMySQL(DATABASE).query_db(query, data)
 
         if result:
             user = cls(result[0])
@@ -46,21 +48,22 @@ class User:
     @classmethod
     def update(cls, data):
         query = "UPDATE users SET user_name = %(user_name)s, updated_at = NOW() WHERE id = %(id)s;"
-        return connectToMySQL('login_and_registration_db').query_db(query, data)
+        return connectToMySQL(DATABASE).query_db(query, data)
 
     @classmethod
     def destroy(cls, data):
         query = "DELETE FROM users WHERE id = %(id)s;"
-        return connectToMySQL('login_and_registration_db').query_db(query, data)
+        return connectToMySQL(DATABASE).query_db(query, data)
 
     @classmethod
     def get_one_login(cls, data):
         query = "SELECT * FROM users WHERE email = %(email)s;"
-        result = connectToMySQL('login_and_registration_db').query_db(query, data)
+        result = connectToMySQL(DATABASE).query_db(query, data)
 
         if result:
             user = cls(result[0])
             return user
+        print('user doesnt exist')
         return False
 
     @staticmethod
@@ -113,14 +116,13 @@ class User:
 
         if not EMAIL_REGEX.match(data['email']):
             flash('Credentials invalid!', 'err_user_email_login')
-
+            print('no email in db')
+            is_valid = False
+            
         if not bcrypt.check_password_hash(potential_user.password, data['password']):
-            flash('Credentials invalid!!', 'err_user_password_login')
-            print(is_valid)
+            flash("Incorrect Password", 'err_user_password_login')
+            print('no password in db')
             is_valid = False
 
         print(is_valid)
         return is_valid
-        
-
-        

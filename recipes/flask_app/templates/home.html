@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Registration</title>
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style.css">
+</head>
+<body>
+    <h1 id="head">Recipe Share</h1>
+    <div id="container">
+        <div class="box">
+            <h1 id="leftH1">Register</h1>
+            <form action="/register" method="post">
+                <div class="lables">
+                    <label for="first_name">First Name:</label>
+                    <input type="text" name="first_name" placeholder="Type your first name here!">
+                    {% for message in get_flashed_messages(category_filter=["err_user_first_name"]) %}
+                    <p class="alert_alert-danger">{{ message }}</p>
+                    {% endfor %}
+                </div>
+                <div class="lables">
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" name="last_name" placeholder="Type your last name here!">
+                    {% for message in get_flashed_messages(category_filter=["err_user_last_name"]) %}
+                    <p class="alert_alert-danger">{{ message }}</p>
+                    {% endfor %}
+                </div>
+                <div class="lables">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" placeholder="Type your email here!">
+                    {% for message in get_flashed_messages(category_filter=["err_user_email"]) %}
+                    <p class="alert_alert-danger">{{ message }}</p>
+                    {% endfor %}
+                </div>
+                <div class="lables">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" placeholder="Type your password here">
+                    {% for message in get_flashed_messages(category_filter=["err_password"]) %}
+                    <p class="alert_alert-danger">{{ message }}</p>
+                    {% endfor %}
+                </div>
+                <div class="lables">
+                    <label for="confirm_password">Confirm Password:</label>
+                    <input type="password" name="confirm_password" id="confirm_password" placeholder="Retype your password here!">
+                    {% for message in get_flashed_messages(category_filter=["err_user_password"]) %}
+                    <p class="alert_alert-danger">{{ message }}</p>
+                    {% endfor %}
+                </div>
+                <input id="buttonLeft" type="submit" value="Register">
+            </form>
+        </div>
+        <div class="box">
+            <h1 id="rightH1">Login</h1>
+            <form action="/login" method="post">
+                <div class="lables">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" placeholder="Type your email here">
+                </div>
+                <div class="lables">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" placeholder="Type your password here">
+                    {% for message in get_flashed_messages(category_filter=["err_user_password_login"]) %}
+                    <p class="alert_alert-danger">{{ message }}</p>
+                    {% endfor %}
+                </div>
+                <input id="buttonRight" type="submit" value="Login">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

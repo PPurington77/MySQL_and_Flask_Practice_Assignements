@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#container {
+    margin: 20px;
+}
+
+#headerBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#tags {
+    display: flex;
+    gap: 50px;
+}
+
+.lables {
+    margin-bottom: 15px;
+}
+
+.lables label {
+    vertical-align: top;
+}
+
+
+#mainBox {
+    display: flex;
+    justify-content: space-between;
+}
+
+.blockLabel {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#submitButton {
+    display: block;
+}

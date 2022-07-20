@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome!</title>
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style2.css">
+</head>
+<body>
+    <div id="container">
+        <div id="headerBar">
+            <h1>Welcome, {{ user.first_name }}</h1>
+            <div id="tags">
+                <a href="/add_recipe">+ Create</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        <h2>All posted Recipes:</h2>
+        <table id="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Under</th>
+                    <th>Posted By</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for recipe in all_recipes %}
+                <tr>
+                    <td>{{ recipe.name }}</td>
+                    <td>{{ recipe.under_30 }}</td>
+                    <td>{{ recipe.owner.first_name }}</td>
+                    {% if recipe.owner.id == session['user'] %}
+                    <td><a href="view/recipe/{{ recipe.id }}">View Recipe</a></td>
+                    <td><a href="/edit/{{ recipe.id }}/edit">Edit</a></td>
+                    <td><a href="/delete/{{ recipe.id }}">Delete</a></td>
+                    {% else %}
+                    <td><a href="view/recipe/{{ recipe.id }}">View Recipe</a></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

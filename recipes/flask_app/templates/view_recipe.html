@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe</title>
+</head>
+<body>
+    <div id="container">
+        <div id="headerBar">
+            <h1>Welcome, {{ user.id }}</h1>
+            <div id="tags">
+                <a href="/">back to recipes</a> <!-- question for later ref redirecting to page w/ id-->
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        <h2>Posted by: {{recipe.owner.first_name}}</h2>
+        <h2>{{ recipe.name }}</h2>
+        <p>{{ recipe.description}}</p>
+        <p>{{ recipe.under_30}}</p>
+        <p>{{ recipe.instruction}}</p>
+        <p>{{ recipe.made}}</p>
+    </div>
+</body>
+</html>
